@@ -1,0 +1,37 @@
+.user__chat{
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    
+    .chat__head{
+        background-color: rgb(25, 22, 71);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        color: #fff;
+        
+        .chat__image{
+            img{
+                width: 2rem;
+                border-radius: 50px;
+            }
+        }
+
+        .icons{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .icon{
+                font-size: 1.4rem;
+                cursor: pointer;
+                color: rgb(226, 223, 223);
+            }
+            .edit{
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+}

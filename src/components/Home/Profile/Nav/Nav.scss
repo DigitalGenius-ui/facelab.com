@@ -1,0 +1,43 @@
+.sticky{
+    position: sticky;
+    top: 1rem;
+    .navigation{
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0px 0px 1px 0.3px rgb(112, 112, 112);
+        margin-top: 1rem;
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        .nav{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            cursor: pointer;
+    
+            ::before{
+                content: "";
+                position: absolute;
+                left: -1.18rem;
+                top: 0;
+                bottom: 0;
+                border: 2px solid rgb(236, 151, 52);
+            }
+    
+            span{
+                font-size: 0.5rem;
+            }
+    
+            p{
+                font-size: 0.8rem;
+            }
+        }
+        h1{
+            font-size: 1rem;
+            padding-top: 1.5rem;
+        }
+    }
+    
+}
