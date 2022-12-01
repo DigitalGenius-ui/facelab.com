@@ -22,7 +22,7 @@ const SinglePost = () => {
         <div className="user__details">
           <div className="detail">
             <h1>Milad Amiri</h1>
-            <p className='time'><PublicOutlinedIcon className="icon"/> 2 Hours ago</p>
+            <p className='time'><PublicOutlinedIcon className="icon"/> 2 hours ago</p>
           </div>
           <p className='follow'>Following</p>
         </div>

@@ -3,6 +3,11 @@ import Profile from "./Profile/Profile";
 import Feed from "./Feed/Feed";
 import Chat from './Chat/Chat';
 import "./Home.scss";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 
 const Home = () => {
   return (

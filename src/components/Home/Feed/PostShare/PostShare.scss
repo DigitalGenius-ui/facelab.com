@@ -45,6 +45,11 @@
     border-radius: 50px;
     cursor: pointer;
 
+    &:hover{
+        background-color: rgba(160, 160, 160, 0.438);
+        transition: 300ms ease-in-out;
+    }
+
     span{
         font-size: 0.6rem;
     }

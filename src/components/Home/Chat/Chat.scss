@@ -23,10 +23,21 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            .icon{
-                font-size: 1.4rem;
-                cursor: pointer;
-                color: rgb(226, 223, 223);
+            span {
+                width: 1.8rem;
+                height: 1.8rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50px;
+                &:hover{
+                    background-color: rgba(160, 160, 160, 0.438);
+                }
+                .icon{
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    color: rgb(226, 223, 223);
+                }
             }
             .edit{
                 font-size: 1.1rem;
