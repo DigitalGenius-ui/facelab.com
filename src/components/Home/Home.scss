@@ -4,23 +4,57 @@
     margin: 1rem auto;
     display: flex;
     gap: 1rem;
-    @media(max-width: 999px){
+    
+    .msg__span{
+        display: none;
+    }
+    
+    @media(max-width: 1010px){
         width: 95%;
     }
+    
+    @media(max-width: 900px){
+        .msg__span{
+            display: block;
+            position: relative;
+        }
+        
+        .message__icon{
+            position: fixed;
+            top: 55%;
+            right: 1%;
+            background-color: rgb(236, 151, 52);
+            color: #fff;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
 
-    @media(max-width: 880px){
-       flex-direction: column;
+        .right{
+            position: absolute;
+            width: 18rem;
+            display: none;
+        }
     }
 
-    .left{
+    @media(max-width: 700px){
+        flex-direction: column;
+    }
+
+    .left, .right{
         flex: 1;
+        height: 100%;
     }
     .center{
         flex: 2.5;
+        height: 100%;
     }
-    .right{
-        flex: 1;
-    }
+
 }
 
 $hover :rgba(160, 160, 160, 0.438);

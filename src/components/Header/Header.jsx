@@ -8,7 +8,7 @@ const Header = () => {
     <div className='header'>
         <div className="content">
             <div className="logo">
-                <FitbitIcon/>
+                <FitbitIcon className='logo__icon'/>
                 <h1>facelab</h1>
             </div>
             <div className="search">

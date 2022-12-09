@@ -9,6 +9,7 @@ const Feed = () => {
       <PostShare/>
       <Filters/>
       <Posts/>
+      <Posts/>
     </div>
   )
 }

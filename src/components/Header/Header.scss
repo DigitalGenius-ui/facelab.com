@@ -9,14 +9,13 @@
     background-color: #fff;
     padding: 0.8rem 0;
 
-    
     .content{
         width: 85%;
         max-width: 1280px;
         margin: 0 auto;
         @include display();
         
-        @media(max-width: 999px){
+        @media(max-width: 1010px){
             width: 95%;
         }
         .logo{
@@ -30,6 +29,12 @@
                 margin-top: 0.2rem;
                 letter-spacing: 0.5px;
                 font-weight: 900;
+                color: rgb(28, 28, 28);
+            }
+
+            .logo__icon{
+                color: rgb(236, 151, 52);
+                font-size: 2rem
             }
         }
 
@@ -37,14 +42,21 @@
             @include display();
             justify-content: initial;
             gap: 0.5rem;
-            background-color: rgb(244, 244, 244);
+            background-color: rgb(237, 236, 236);
             padding: 0 1rem;
 
+            @media(max-width:550px){
+                padding: 0 0.5rem;
+            }
             input{
                 border: none;
                 outline: none;
                 background-color: transparent;
                 padding: 0.8rem 0;
+
+                @media(max-width:550px){
+                    padding: 0.5rem 0;
+                }
             }
 
             span{

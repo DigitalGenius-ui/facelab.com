@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from './Nav/Nav';
 import "./Profile.scss";
 import FoundationIcon from '@mui/icons-material/Foundation';
@@ -11,50 +11,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 
 const Profile = () => {
-  const data = [
-    {
-      nav : <FoundationIcon/>,
-      path: "/",
-      name : "Home"
-    },
-    {
-      nav : <WindowIcon/>,
-      path: "/",
-      name : "Find Professionals"
-    },
-    {
-      nav : <NotificationsNoneIcon/>,
-      path: "/notification",
-      name : "Notification"
-    },
-    {
-      nav : <MailOutlineIcon/>,
-      path: "/message",
-      name : "Message"
-    },
-    {
-      nav : <PermIdentityIcon/>,
-      path: "/profile",
-      name : "Profile"
-    },
-    {
-      nav : <StorefrontIcon/>,
-      path: "/Promotions",
-      name : "Promotions"
-    },
-    {
-      nav : <PersonIcon/>,
-      path: "/professional",
-      name : "Professional Profile"
-    },
-    {
-      nav : <CardMembershipIcon/>,
-      path: "subscription/",
-      name : "Subscription"
-    },
-  ]
+  const [selected, setSelected] = useState("Home");
   return (
-    <>
+    <div className="container">
       <div className="user__profile">
         <div className="banner">
           <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg" alt="banner" />
@@ -67,12 +26,65 @@ const Profile = () => {
           <p>@miladamiri</p>
         </div>
       </div>
-      <div className="navbar">
-        {data.map((nav, index) => (
-            <Nav nav={nav} key={index} index={index}/>
-            ))}
-      </div>
-    </>
+        <div className="navbar">
+          <Nav 
+            nav  = {<FoundationIcon/>}
+            path = {"/"}
+            name = {"Home"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<WindowIcon/>}
+            path = {"/"}
+            name = {"Find Professionals"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<NotificationsNoneIcon/>}
+            path = {"/notification"}
+            name = {"Notification"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<MailOutlineIcon/>}
+            path = {"/message"}
+            name = {"Message"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<PermIdentityIcon/>}
+            path = {"/profile"}
+            name = {"Profile"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<StorefrontIcon/>}
+            path = {"/Promotions"}
+            name = {"Promotions"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<PersonIcon/>}
+            path = {"/professional"}
+            name = {"Professional Profile"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+          <Nav 
+            nav  = {<CardMembershipIcon/>}
+            path = {"/subscription"}
+            name = {"Subscription"}
+            selected = {selected}
+            setSelected = {setSelected}
+            />
+        </div>
+    </div>
   )
 }
 

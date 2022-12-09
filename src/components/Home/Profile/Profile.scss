@@ -1,3 +1,4 @@
+.container{
 .user__profile{
     position: relative;
     padding-bottom: 1.4rem;
@@ -23,6 +24,17 @@
             transform: translate(-50%, -50%);
             border: 3px solid rgb(236, 151, 52);
             box-shadow: 0px 0px 4px 0.3px rgba(0, 0, 0, 0.644);
+
+            @media(max-width: 1010px){
+                width: 4rem;
+                height: 4rem;
+            }
+
+            @media(max-width: 700px){
+                width: 7rem;
+                height: 7rem;
+            }
+        
         }
     }
 
@@ -43,10 +55,24 @@
     }
 
 }
-
 .navbar{
+    position: sticky;
+    top: 1rem;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0px 0px 1px 0.3px rgb(112, 112, 112);
     margin-top: 1rem;
+
+    @media(max-width:700px){
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.4rem 0;
+        z-index: 100000;
+        border-top: 1px solid rgba(0, 0, 0, 0.603);
+    }
+}
 }

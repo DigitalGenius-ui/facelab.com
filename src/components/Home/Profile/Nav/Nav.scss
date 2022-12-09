@@ -1,11 +1,15 @@
-.sticky{
-    position: sticky;
-    top: 1rem;
+
     .navigation{
         padding: 0.7rem 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        @media(max-width:450px){
+            flex-direction: row;
+            gap: 0;
+        }
+
         .nav{
             display: flex;
             align-items: center;
@@ -14,24 +18,32 @@
             cursor: pointer;
 
             &:hover{
-                color:rgb(236, 151, 52);;
+                color:rgb(236, 151, 52);
             }
 
             span{
                 font-size: 0.5rem;
             }
-    
+            
+            .active{
+                color:rgb(236, 151, 52);
+            }
+            
             p{
                 font-size: 0.8rem;
+                @media(max-width:700px){
+                    display: none;
+                }
             }
         }
         h1{
             font-size: 1rem;
             padding-top: 1.5rem;
         }
+
+    @media(max-width:700px){
+        position: initial;
     }
-    
-}
 
 .nav.active{
     color:rgb(236, 151, 52);;
@@ -53,4 +65,11 @@
     top: 0;
     bottom: 0;
     border: 2px solid rgb(236, 151, 52);
+    @media(max-width:700px){
+        left: 0;
+        bottom: auto;
+        right: 0;
+        top: -10px;
+    }
+}
 }

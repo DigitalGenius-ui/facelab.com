@@ -2,12 +2,8 @@ import React from 'react'
 import Profile from "./Profile/Profile";
 import Feed from "./Feed/Feed";
 import Chat from './Chat/Chat';
+import MailIcon from '@mui/icons-material/Mail';
 import "./Home.scss";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -21,6 +17,7 @@ const Home = () => {
       <div className="right">
         <Chat/>
       </div>
+      <span className="msg__span"><MailIcon className='message__icon'/></span>
     </div>
   )
 }
