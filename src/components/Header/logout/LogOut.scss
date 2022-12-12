@@ -1,0 +1,30 @@
+.user__menu{
+//   width: 7rem;
+  z-index: 1000000;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px 1px rgb(176, 176, 176);
+  border-radius: 5px;
+  padding: 0.5rem;
+  
+  .submenu{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding:  0.3rem 0.5rem;
+    border-radius: 5px;
+
+    &:hover{
+        background-color: rgb(233, 233, 233);
+    }
+
+    p{
+        font-size: 0.9rem;
+    }
+    
+    .icon{
+        font-size: 1.4rem;
+        color: rgb(236, 151, 52);
+    }
+  }
+}

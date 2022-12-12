@@ -23,22 +23,47 @@
     }
 
     .signUp{
-        width: 15rem;
+        width: 13rem;
         margin: 0 auto;
         padding: 0.8rem 0;
         text-align: center;
 
         span{
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: rgb(45, 45, 45);
         }
 
         a{
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
+
     }
 }
 
 .MuiFormLabel-root {
     font-size: 14px !important;
+}
+
+.btn{
+    margin-top: 0.8rem;
+    &.load{
+        opacity: 0.7;
+    }
+    .loading{
+        width: 1rem;
+        height: 1rem;
+        border: 1px solid #000;
+        border-color: #000 transparent;
+        border-radius: 50px;
+        animation: 1s loader linear infinite;
+    }
+}
+
+@keyframes loader {
+    0%{
+        transform: rotate(0);
+    }
+    0%{
+        transform: rotate(360deg);
+    }
 }

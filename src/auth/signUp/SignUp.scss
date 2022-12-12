@@ -4,4 +4,16 @@
         align-items: center;
         gap: 0.8rem;
     }
+
+    .signIn{
+        width: 14rem;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        padding: 1.4rem 0 0.8rem 0;
+        text-align: center;
+
+        a{
+            font-size: 0.8rem;
+        }
+    }
 }
