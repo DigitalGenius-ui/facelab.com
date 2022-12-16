@@ -8,6 +8,22 @@
     box-shadow: 0px 0px 1px 0.3px rgb(112, 112, 112);
     padding: 2rem;
 
+    .upload__image{
+        width: 100%;
+        margin-top: 1rem;
+
+        span{
+            cursor: pointer;
+            &:hover{
+                opacity: 0.6;
+            }
+        }
+
+        img{
+            width: 100%;
+        }
+    }
+
     @media(max-width:480px){
         padding: 1rem;
     }
@@ -15,6 +31,15 @@
     .flex{
         @include display();
         gap: 1rem;
+
+        .send__btn {
+            height: 2rem;
+            background-color:rgb(236, 151, 52);
+
+            .send{
+                font-size: 1.2rem;
+            }
+        }
     }
 
     .post__left {

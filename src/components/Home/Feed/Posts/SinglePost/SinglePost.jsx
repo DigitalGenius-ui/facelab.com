@@ -7,12 +7,26 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
 import PersonRemoveOutlinedIcon from '@mui/icons-material/PersonRemoveOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import "./SinglePost.scss";
+import { FaceLabContext } from '../../../../../context/Context';
+import auth, { db } from '../../../../../firbase/firebase';
+import { collection, deleteDoc, doc } from 'firebase/firestore';
 
-const SinglePost = () => {
+const SinglePost = ({ post }) => {
   const [show, setShow] = useState(false);
-
+  const { isAuth } = FaceLabContext();
+  const [textLong, setTextLong] = useState(true);
+  
+  const removePost = async () => {
+    const remove = doc(collection(db, "posts"), post.id);
+    try {
+      await deleteDoc(remove);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className='post'>
       <div className="post__head">
@@ -21,7 +35,7 @@ const SinglePost = () => {
         </div>
         <div className="user__details">
           <div className="detail">
-            <h1>Milad Amiri</h1>
+            <h1>{post.author.email}</h1>
             <p className='time'><PublicOutlinedIcon className="icon"/> 2 hours ago</p>
           </div>
           <p className='follow'>Following</p>
@@ -30,17 +44,30 @@ const SinglePost = () => {
         onClick={() => setShow(!show)}
         className='dot'><MoreHorizOutlinedIcon/></span>
         {/* user feature  */}
-        {show && <div className="user__features">
-          <div className='user__btn'><ReportOutlinedIcon className='icon'/> report post</div>
-          <div className='user__btn'><PersonRemoveOutlinedIcon className='icon'/> unfollow</div>
-          <div className='user__btn'><SendOutlinedIcon className='icon'/> send messages</div>
-        </div>}
+        {show && (
+          isAuth && post.author.id === auth.currentUser.uid ? (
+            <div className="user__features">
+              <div className='user__btn'
+              onClick={removePost}
+              ><DeleteIcon className='icon'/>Remove Post</div>
+              <div className='user__btn'><ModeEditIcon className='icon'/> Edit Post</div>
+              {/* <div className='user__btn'><SendOutlinedIcon className='icon'/> send messages</div> */}
+            </div>
+          ) : (
+            <div className="user__features">
+              <div className='user__btn'><ReportOutlinedIcon className='icon'/>report post</div>
+              <div className='user__btn'><PersonRemoveOutlinedIcon className='icon'/> unfollow</div>
+              <div className='user__btn'><SendOutlinedIcon className='icon'/> send messages</div>
+            </div>
+          )
+        )}
       </div>
       <div className="user__text">
-        <p className='post__text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Illo, error beatae. Cum labore exercitationem fugiat. 
-          Molestiae suscipit magni voluptatem, quam dicta sed. 
-          Asperiores voluptatum.</p>
+        <p className='post__text'>{`${textLong ? post.text.substring(0,220) : post.text}`}
+        {post.text.length > 220 && 
+        <button 
+        className='textLong'
+        onClick={() => setTextLong(!textLong)}>{textLong ? "...see more" : "see less"}</button>}</p>
       </div>
       <div className="post__image">
         <img src="https://images.pexels.com/photos/15286/pexels-photo.jpg?cs=srgb&dl=pexels-luis-del-r%C3%ADo-15286.jpg&fm=jpg" alt="post" />

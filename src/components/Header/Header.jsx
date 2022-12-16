@@ -5,7 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';
 import LogOut from './logout/LogOut';
-import { useState } from 'react';
 import { FaceLabContext } from '../../context/Context';
 
 const Header = () => {
