@@ -1,0 +1,52 @@
+@mixin display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.load{
+    position: fixed;
+    inset: 0;
+    background-color: #fff;
+    z-index: 10000;
+    @include display();
+
+    .logo{
+        @include display();  
+        gap: 0.7rem;  
+
+        .logo__icon{
+            font-size: 3rem;
+            animation: 1s logo ease-in-out infinite;
+        }
+
+        h1{
+            text-transform: uppercase;
+            font-weight: bolder;
+            letter-spacing: 0.2rem;
+            animation: 400ms text ease-in-out;
+        }
+    }
+}
+
+@keyframes text {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes logo {
+    0%{
+        transform: rotate(0);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}

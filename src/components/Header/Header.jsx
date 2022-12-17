@@ -28,7 +28,7 @@ const Header = () => {
                 onClick={() => setShow(!show)}
                 className='avatar'
                 alt="this is the use image" 
-                src={isAuth ? "https://res.cloudinary.com/ghazni/image/upload/v1646637426/m_jvhkfn.jpg" : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}/>
+                src={isAuth ? isAuth.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png" : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}/>
                 <div className="logOut">
                   {isAuth && show && <LogOut/>}
                 </div>

@@ -6,6 +6,7 @@ const Context = (props) => {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
   const [alert, setAlert] = useState({
     type : "success",
     message : "Login Successfully",
@@ -13,8 +14,9 @@ const Context = (props) => {
   })
   return (
     <FaceLab.Provider value={{
-      isAuth, setIsAuth, show, setShow,
-      loading, setLoading, alert, setAlert
+      isAuth, setIsAuth, show, setShow, 
+      alert, setAlert, loading, setLoading,
+      posts, setPosts
     }}>
         {props.children}
     </FaceLab.Provider>

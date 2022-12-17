@@ -148,6 +148,7 @@
                 }
             }
         }
+
         .icon{
             font-size: 1rem;
         }
@@ -187,6 +188,20 @@
                     color: #000;
                     transition: 200ms ease-in-out;
                 }
+            }
+        }
+
+        .liked{
+            button{
+                background-color: rgba(209, 209, 209, 0.438);
+                box-shadow: none;
+                color: rgb(5, 5, 165);;
+                transition: 200ms ease-in-out;
+            }
+
+            .icon{
+                font-size: 1.2rem;
+                color: rgb(5, 5, 165);
             }
         }
     }

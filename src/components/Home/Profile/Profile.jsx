@@ -9,9 +9,12 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import PersonIcon from '@mui/icons-material/Person';
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
+import { FaceLabContext } from '../../../context/Context';
 
 const Profile = () => {
   const [selected, setSelected] = useState("Home");
+  const { isAuth } = FaceLabContext();
+
   return (
     <div className="container">
       <div className="user__profile">
@@ -19,11 +22,11 @@ const Profile = () => {
           <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg" alt="banner" />
         </div>
         <div className="user__image">
-          <img src="https://res.cloudinary.com/ghazni/image/upload/v1646637426/m_jvhkfn.jpg" alt="user" />
+          <img src={isAuth.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="user" />
         </div>
         <div className="user__details">
-          <h1>Milad Amiri</h1>
-          <p>@miladamiri</p>
+          <h1>{isAuth.displayName || isAuth.email}</h1>
+          <p>@username</p>
         </div>
       </div>
         <div className="navbar">
