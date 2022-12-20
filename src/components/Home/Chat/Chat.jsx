@@ -3,8 +3,10 @@ import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import "./Chat.scss";
 import SingleMessage from './SingleMessage/SingleMessage';
+import { FaceLabContext } from "../../../context/Context";
 
 const Chat = () => {
+  const { isAuth } = FaceLabContext();
   let data = [
     {
       id : 1,
@@ -31,13 +33,12 @@ const Chat = () => {
       newMessage : false
     }
   ]
-  const [isActive, setIsActive] = useState(false);
-  const [newMessage, setNewMessage] = useState(false);
+
   return (
     <div className='user__chat'>
       <div className="chat__head">
         <div className="chat__image">
-          <img src="https://res.cloudinary.com/ghazni/image/upload/v1646637426/m_jvhkfn.jpg" alt="user" />
+          <img src={isAuth.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="user" />
         </div>
         <div className="icons">
           <span><BorderColorOutlinedIcon className='icon edit'/></span>

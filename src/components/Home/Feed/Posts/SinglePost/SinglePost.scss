@@ -46,6 +46,15 @@
                 color: grey;
                 font-weight: 500;
                 margin-top: 0.15rem;
+                cursor: pointer;
+
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+
+            .notFollow{
+                color: rgb(7, 7, 133);
             }
         }
         .dot{
@@ -204,5 +213,33 @@
                 color: rgb(5, 5, 165);
             }
         }
+    }
+
+    .input{
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 1rem;
+
+        button{
+            padding: 0.5rem 0.7rem 0.3rem 0.7rem;
+            border: none;
+            background-color: rgb(91, 91, 91);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 0.7;
+            }
+            
+            .icon{
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .comments{
+        margin-top: 0.5rem;
     }
 }

@@ -14,15 +14,22 @@ import "./SinglePost.scss";
 import { FaceLabContext } from '../../../../../context/Context';
 import auth, { db } from '../../../../../firbase/firebase';
 import { setDoc, collection, deleteDoc, doc, onSnapshot, addDoc } from 'firebase/firestore';
+import SendIcon from "@mui/icons-material/Send";
+import { TextField } from '@mui/material';
 import { format } from 'timeago.js';
 import { useEffect } from 'react';
+import Comments from './Comments/Comments';
 
 const SinglePost = ({ post }) => {
   const [show, setShow] = useState(false);
+  const [follow, setFollow] = useState(true);
   const { isAuth } = FaceLabContext();
   const [textLong, setTextLong] = useState(true);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState([]);
+  const [comment, setComment] = useState(false);
+  const [commentText, setCommentText] = useState("");
+  const [commentList, setCommentList] = useState([]);
   
   const removePost = async () => {
     const remove = doc(collection(db, "posts"), post.id);
@@ -51,8 +58,34 @@ const SinglePost = ({ post }) => {
       await deleteDoc(doc(db,"posts", post.id, "likes", isAuth.uid));
     } else{
       await setDoc(doc(db, "posts", post.id, "likes", isAuth.uid), {
-        name : isAuth.displayName || isAuth.email
+        name : isAuth.displayName || isAuth.email,
+        image : isAuth.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png"
       });
+    }
+  }
+
+  useEffect(() => {
+    onSnapshot(collection(db, "posts", post.id, "comment"), (snapshot) => 
+      setCommentList(snapshot.docs.map((doc) => doc.data()))
+    )
+  },[db, post.id])
+
+  const addComment = async () => {
+    setCommentText("")
+    await addDoc(collection(db, "posts", post.id, "comment"), {
+      comment : commentText,
+      name : isAuth.displayName || isAuth.email,
+      image : isAuth.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+      date: Date.now(),
+    });
+  }
+
+  const removeComment = async () => {
+    try {
+     const res = await deleteDoc(doc(db,"posts", post.id, "comment", isAuth.uid));
+     console.log(res)
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -67,7 +100,9 @@ const SinglePost = ({ post }) => {
             <h1>{post.author.name || post.author.email}</h1>
             <p className='time'><PublicOutlinedIcon className="icon"/>{format(post.time)}</p>
           </div>
-          <p className='follow'>Following</p>
+          <p 
+          onClick={() => setFollow(!follow)}
+          className={`follow ${follow ? "" : "notFollow"}`}>{follow ? "Followed" : "Follow"}</p>
         </div>
         <span 
         onClick={() => setShow(!show)}
@@ -80,7 +115,7 @@ const SinglePost = ({ post }) => {
               onClick={removePost}
               ><DeleteIcon className='icon'/>Remove Post</div>
               <div className='user__btn'><ModeEditIcon className='icon'/> Edit Post</div>
-              {/* <div className='user__btn'><SendOutlinedIcon className='icon'/> send messages</div> */}
+              <div className='user__btn'><SendOutlinedIcon className='icon'/> Send Messages</div>
             </div>
           ) : (
             <div className="user__features">
@@ -96,7 +131,7 @@ const SinglePost = ({ post }) => {
         {post.text.length > 220 && 
         <button 
         className='textLong'
-        onClick={() => setTextLong(!textLong)}>{textLong ? "...see more" : "see less"}</button>}</p>
+        onClick={() => setTextLong(!textLong)}>{textLong ? "...see more" : ""}</button>}</p>
       </div>
       {post.image && (
         <div className="post__image">
@@ -104,10 +139,12 @@ const SinglePost = ({ post }) => {
         </div>
       )}
       <div className="total__reactions">
-        <div className="reaction">
-          <ThumbUpOffAltOutlinedIcon className='icon'/>
-          <p>{likes.length} <span>Likes</span></p>
+        {likes.length > 0 && (
+          <div className="reaction">
+            <ThumbUpOffAltOutlinedIcon className='icon'/>
+            <p>{likes.length} <span>Likes</span></p>
         </div>
+        )}
         <div className="reaction flex">
           <ChatBubbleOutlineOutlinedIcon className='icon'/>
           <p>1.6k <span>Comments</span></p>
@@ -118,15 +155,37 @@ const SinglePost = ({ post }) => {
         <div 
         onClick={likePost}
         className={`button ${liked ? "liked" : ""}`}>
-          <button>{liked ? <ThumbUpAltIcon className='icon'/> : <ThumbUpOffAltOutlinedIcon className='icon'/>} Like</button>
+          <button>{liked ? <ThumbUpAltIcon className='icon'/> : 
+          <ThumbUpOffAltOutlinedIcon className='icon'/>} Like</button>
         </div>
-        <div className="button flex">
+        <div className="button flex" onClick={() => setComment(!comment)}>
           <button><ChatBubbleOutlineOutlinedIcon className='icon'/> Comment</button>
         </div>
         <div className="button">
           <button><ShareOutlinedIcon className='icon'/> Share</button>
         </div>
       </div>
+      {/* comment part  */}
+      {comment && (
+        <div className='comments'>
+          {commentList.map((comment, i) => (
+            <Comments
+              key={i}
+              comment={comment}
+              removeComment={removeComment}
+            />
+          ))}
+          <div className="input">
+            <TextField 
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              fullWidth label="Comment..." size='small'/>
+            <button
+              onClick={addComment}
+            ><SendIcon className='icon'/></button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
