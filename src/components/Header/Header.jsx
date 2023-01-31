@@ -1,9 +1,9 @@
 import React from 'react';
 import "./Header.scss";
-import FitbitIcon from '@mui/icons-material/Fitbit';
-import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material';
+import FitbitIcon from '@mui/icons-material/Fitbit';
+import SearchIcon from '@mui/icons-material/Search';
 import LogOut from './logout/LogOut';
 import { FaceLabContext } from '../../context/Context';
 
